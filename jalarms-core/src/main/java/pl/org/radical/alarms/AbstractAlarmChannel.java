@@ -4,8 +4,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.huxhorn.lilith.slf4j.Logger;
+import de.huxhorn.lilith.slf4j.LoggerFactory;
 
 /**
  * An abstract implementation of AlarmChannel, to ease the creation of custom channels.
