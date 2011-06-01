@@ -160,5 +160,10 @@
 		<module>jalarms-core</module>
 		<module>jalarms-channels</module>
 		<module>jalarms-aop</module>
+		<module>jalarms-channels-email</module>
+		<module>jalarms-channels-smpp</module>
+		<module>jalarms-channels-jabber</module>
+		<module>jalarms-channels-msn</module>
+		<module>jalarms-channels-nagios</module>
 	</modules>
 </project>
