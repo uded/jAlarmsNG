@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>jalarms</artifactId>
+    <groupId>net.sf.jalarms</groupId>
+    <version>1.5.2</version>
+  </parent>
+  <groupId>net.sf.jalarms</groupId>
+  <artifactId>jalarms-aop</artifactId>
+  <version>1.5.2</version>
+	<packaging>jar</packaging>
+  <name>jAlarms AOP</name>
+  <description>This project contains the AlarmAspect and the AlarmOnException annotation, to allow for AOP setup of alarm messages.</description>
+	<url>http://jalarms.sourceforge.net/</url>
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License, version 2.1</name>
+			<url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.8</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jalarms</groupId>
+			<artifactId>jalarms-core</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
