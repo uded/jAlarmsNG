@@ -150,10 +150,14 @@
 		</plugins>
 	</build>
 	<distributionManagement>
-		<site>
-			<id>jalarms.sf.net</id>
-			<url>scp://chochos,jalarms@shell.sourceforge.net:/home/groups/j/ja/jalarms/htdocs</url>
-		</site>
+		<repository>
+			<id>radical-releases</id>
+			<url>https://dev.radical.com.pl/maven/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>radical-snapshot</id>
+			<url>https://dev.radical.com.pl/maven/content/repositories/snapshots</url>
+		</snapshotRepository>
 	</distributionManagement>
 	<modules>
 		<module>jalarms-core</module>
@@ -164,5 +168,6 @@
 		<module>jalarms-channels-jabber</module>
 		<module>jalarms-channels-msn</module>
 		<module>jalarms-channels-nagios</module>
+		<module>jalarms-channels-notifo</module>
 	</modules>
 </project>

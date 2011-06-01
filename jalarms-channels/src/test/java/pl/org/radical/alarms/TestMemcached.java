@@ -9,8 +9,7 @@ import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.huxhorn.lilith.slf4j.Logger;import de.huxhorn.lilith.slf4j.LoggerFactory;
 
 /**
  * Tests the memcached client connected to a local instance; to avoid complicating your build

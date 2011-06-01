@@ -3,8 +3,7 @@ package pl.org.radical.alarms;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.huxhorn.lilith.slf4j.Logger;import de.huxhorn.lilith.slf4j.LoggerFactory;
 
 /**
  * This class is used in unit tests to receive a notification when an alarm is actually sent.

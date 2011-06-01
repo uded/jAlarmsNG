@@ -75,5 +75,10 @@
 			<artifactId>jalarms-channels-smpp</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.pl.radical.jalarms</groupId>
+			<artifactId>jalarms-channels-notifo</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>

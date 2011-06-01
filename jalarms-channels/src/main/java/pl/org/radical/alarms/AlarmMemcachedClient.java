@@ -10,8 +10,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.huxhorn.lilith.slf4j.Logger;import de.huxhorn.lilith.slf4j.LoggerFactory;
 
 /**
  * An alarm cache that uses memcached to store the data it needs to know if an alarm message should be

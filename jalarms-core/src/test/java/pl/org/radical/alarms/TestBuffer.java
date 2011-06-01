@@ -5,8 +5,7 @@ import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.huxhorn.lilith.slf4j.Logger;import de.huxhorn.lilith.slf4j.LoggerFactory;
 
 /**
  * Test the buffering mechanism introduced in 1.5

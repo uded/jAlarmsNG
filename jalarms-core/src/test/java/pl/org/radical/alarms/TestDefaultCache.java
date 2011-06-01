@@ -5,8 +5,7 @@ import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.huxhorn.lilith.slf4j.Logger;import de.huxhorn.lilith.slf4j.LoggerFactory;
 
 /** Test the behavior of the default cache. */
 public class TestDefaultCache implements UnitTestChannel.ChanDelegate {
