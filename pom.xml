@@ -164,5 +164,6 @@
 		<module>jalarms-channels-jabber</module>
 		<module>jalarms-channels-msn</module>
 		<module>jalarms-channels-nagios</module>
+		<module>jalarms-channels-snmp</module>
 	</modules>
 </project>
