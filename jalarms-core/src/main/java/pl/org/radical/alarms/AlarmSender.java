@@ -1,21 +1,3 @@
-/*
-jAlarms A simple Java library to enable server apps to send alarms to sysadmins.
-Copyright (C) 2009 Enrique Zamudio Lopez
-
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
-*/
 package pl.org.radical.alarms;
 
 import java.security.MessageDigest;
@@ -67,7 +49,7 @@ public class AlarmSender {
 	 * alarms will always be transmitted no sooner than 30 to 60 seconds after they're received, if they were
 	 * only received one time; an alarm that's been received 2 or more times will be queued for as long
 	 * as the buffer specifies. */
-	public void setAlarmTimeBuffer(int value) {
+	public void setAlarmTimeBuffer(final int value) {
 		bufTime = value;
 	}
 	public int getAlarmTimeBuffer() {
@@ -75,12 +57,12 @@ public class AlarmSender {
 	}
 
 	/** Sets the cache to use for alarm messages. */
-	public void setAlarmCache(AlarmCache value) {
+	public void setAlarmCache(final AlarmCache value) {
 		cache = value;
 	}
 
 	/** Sets the alarm channels to be used for sending alarm messages. */
-	public void setAlarmChannels(List<AlarmChannel> channels) {
+	public void setAlarmChannels(final List<AlarmChannel> channels) {
 		chans = channels;
 	}
 
@@ -156,7 +138,8 @@ public class AlarmSender {
 			timer = Executors.newSingleThreadScheduledExecutor();
 			buffer = new ConcurrentHashMap<String, AlarmSender.CachedAlarm>();
 			timer.scheduleWithFixedDelay(new Runnable(){
-				public void run() {
+				@Override
+                public void run() {
 					long now = System.currentTimeMillis();
 					//check queue, send alarms
 					Iterator<Map.Entry<String, CachedAlarm>> iter;
@@ -206,7 +189,7 @@ public class AlarmSender {
 			char[] c = new char[buf.length * 2];
 			for (int i = 0; i < buf.length; i++) {
 				c[i * 2] = hex[(buf[i] & 0xf0) >> 4];
-				c[(i * 2) + 1] = hex[buf[i] & 0x0f];
+				c[i * 2 + 1] = hex[buf[i] & 0x0f];
 			}
 			hash = new String(c);
 		}
@@ -228,7 +211,7 @@ public class AlarmSender {
 		int times = 1;
 		String src;
 		String msg;
-		private CachedAlarm(String src, String msg) {
+		private CachedAlarm(final String src, final String msg) {
 			lastSent = System.currentTimeMillis();
 			firstSent = lastSent;
 			this.src = src;
