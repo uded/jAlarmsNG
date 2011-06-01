@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>jalarms</artifactId>
-    <groupId>net.sf.jalarms</groupId>
-    <version>1.5.2</version>
+  	<artifactId>parent</artifactId>
+  	<groupId>org.pl.radical.jalarms</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../</relativePath>
   </parent>
-  <groupId>net.sf.jalarms</groupId>
+  <groupId>org.pl.radical.jalarms</groupId>
   <artifactId>jalarms-aop</artifactId>
-  <version>1.5.2</version>
 	<packaging>jar</packaging>
   <name>jAlarms AOP</name>
   <description>This project contains the AlarmAspect and the AlarmOnException annotation, to allow for AOP setup of alarm messages.</description>
@@ -30,9 +30,9 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>net.sf.jalarms</groupId>
+			<groupId>org.pl.radical.jalarms</groupId>
 			<artifactId>jalarms-core</artifactId>
-			<version>1.5.2</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
