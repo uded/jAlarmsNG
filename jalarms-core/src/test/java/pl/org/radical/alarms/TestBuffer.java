@@ -1,8 +1,5 @@
 package pl.org.radical.alarms;
 
-import pl.org.radical.alarms.AlarmChannel;
-import pl.org.radical.alarms.AlarmSender;
-
 import java.util.Collections;
 import java.util.Date;
 
@@ -11,21 +8,22 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** Test the buffering mechanism introduced in 1.5
+/**
+ * Test the buffering mechanism introduced in 1.5
  * 
  * @author Enrique Zamudio
  */
 public class TestBuffer implements UnitTestChannel.ChanDelegate {
 
-	private Logger log = LoggerFactory.getLogger(getClass());
+	private final Logger log = LoggerFactory.getLogger(getClass());
 	private AlarmSender sender;
-	private UnitTestChannel chan = new UnitTestChannel();
+	private final UnitTestChannel chan = new UnitTestChannel();
 	private int state;
 
 	@Before
 	public void setup() {
 		sender = new AlarmSender();
-		sender.setAlarmChannels(Collections.singletonList((AlarmChannel)chan));
+		sender.setAlarmChannels(Collections.singletonList((AlarmChannel) chan));
 		chan.delegate = this;
 	}
 
@@ -39,9 +37,9 @@ public class TestBuffer implements UnitTestChannel.ChanDelegate {
 		assert System.currentTimeMillis() - chan.lastSent < 1000;
 	}
 
-	//@Test
+	// @Test
 	public void testWithBuffer() {
-		//First, with no buffer, an alarm should be sent immediately
+		// First, with no buffer, an alarm should be sent immediately
 		state = 2;
 		log.info("Setting up 65s buffer {}", String.format("%TT", new Date()));
 		sender.setAlarmTimeBuffer(65000);
@@ -58,10 +56,16 @@ public class TestBuffer implements UnitTestChannel.ChanDelegate {
 		state = 3;
 		chan.stamp = System.currentTimeMillis();
 		sender.sendAlarmAlways("test");
-		try { Thread.sleep(7000); } catch (InterruptedException ex) {}
+		try {
+			Thread.sleep(7000);
+		} catch (final InterruptedException ex) {
+		}
 		log.info("Sending alarm 2/3 with buffer, wait 7 seconds {}", String.format("%TT", new Date()));
 		sender.sendAlarmAlways("test");
-		try { Thread.sleep(7000); } catch (InterruptedException ex) {}
+		try {
+			Thread.sleep(7000);
+		} catch (final InterruptedException ex) {
+		}
 		log.info("Sending alarm 3/3 with buffer, wait for send {}", String.format("%TT", new Date()));
 		chan.sent.set(false);
 		sender.sendAlarmAlways("test");
@@ -72,8 +76,8 @@ public class TestBuffer implements UnitTestChannel.ChanDelegate {
 	}
 
 	@Override
-	public void alarmReceived(String msg, long when) {
-		long now = System.currentTimeMillis();
+	public void alarmReceived(final String msg, final long when) {
+		final long now = System.currentTimeMillis();
 		if (state == 1) {
 			assert "test".equals(msg);
 		} else if (state == 2) {
