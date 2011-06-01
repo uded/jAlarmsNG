@@ -15,4 +15,4 @@ This diagram shows how jAlarms works; it's very simple. Your components invoke t
 in turn sends the corresponding alarm messages through its available channels. You can create your own custom channels or just use the ones 
 included with the library, configuring them the way it best fits your application.
 
-![Basic work](basic_work.jpg "Basic work")
+![Basic work](basic_work.png "Basic work")
