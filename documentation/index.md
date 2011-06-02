@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: Maven
+title: Index
 ---
 
 Documentation
