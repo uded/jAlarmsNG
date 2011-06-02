@@ -250,6 +250,9 @@ div.header-text {
 	float:left;
 	width:590px;
 }
+div.header-text a {
+	color: #fff;
+}
 div.header-images {
 	width:290px;
 	float:right;

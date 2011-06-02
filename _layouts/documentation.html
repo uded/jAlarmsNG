@@ -24,20 +24,17 @@ A free web template by spyka Webmaster (http://www.spyka.net)
 		<div class="clear">
 			<ul class="sf-menu clear">
             	<!-- PAGE NAVIGATION -->
-				<li><a href="index.html"><span>home</span></a></li>
-				<li class="selected"><a href="examples.html"><span>examples</span></a></li>
-               	<li><a href="blog.html"><span>blog</span></a></li>
-				<li><a href="#"><span>products</span></a></li>
-				<li><a href="#"><span>portfolio</span></a></li>
-				<li><a href="#"><span>support</span></a></li>
-				<li><a href="#"><span>contact</span></a></li>
+				<li><a href="/jAlarms/index.html"><span>home</span></a></li>
+				<li class="selected"><a href="/jAlarms/documentation/index.html"><span>documentation</span></a></li>
+				<li><a href="#"><span>development</span></a></li>
+				<li><a href="https://github.com/uded/jAlarms/issues"><span>bug tracking</span></a></li>
 			</ul>
 		</div>
 	</div>
 	
 	<div id="header" class="clear">
 		<div class="header-text">
-			<h2><strong>Pellentesque</strong> habitant morbi tristique </h2>			
+			<h2><strong>jAlarms</strong> to communicate with your app better </h2>			
 		</div>
 	</div>
 	<div class="header-bottom"></div>
@@ -54,7 +51,7 @@ A free web template by spyka Webmaster (http://www.spyka.net)
                         <li>/</li>
 						<li><a href="jAlarms/documentation/index.html">documentation</a></li>
                         <li>/</li>
-						<li>{{ page.title }}</li>
+						<li>{{ page.title | downcase }}</li>
 					</ul>
 				</div>
 			</div>
