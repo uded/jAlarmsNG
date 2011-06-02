@@ -34,11 +34,14 @@ For snapshot release add this to pom.xml:
 		...
 		<dependencies>
 				<dependency>
-					<groupId>net.sourceforge.java-jml</groupId>
-					<artifactId>jml</artifactId>
-					<version>1.0-SNAPSHOTS</version>
+					<groupId>org.pl.radical.jalarms</groupId>
+					<artifactId>jalarms-core</artifactId>
+					<version>1.0-SNAPSHOT</version>
 				</dependency>
 				...
 		</dependencies>
 		...
 	</project>
+
+That is the **minimum** configuration. If you would like to use some additional channels or any other components, please do include
+apropriate additional dependcies.
