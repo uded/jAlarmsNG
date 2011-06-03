@@ -363,6 +363,11 @@ div.bcnav ul li {
 	display:block;
 	padding:0 2px;
 }
+div#social {
+	margin: 0 0 15px 0;
+	padding: 5px;
+	text-align: center;
+}
 div#sidebar ul {
 	margin:0;
 	padding:0;
