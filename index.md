@@ -2,12 +2,18 @@
 layout: index
 ---
 
-Goal
-----
-The goal of this project is to provide Java application developers with a tool to easily implement an alarm mechanism on server applications. 
-Server applications usually have to be monitored constantly to check for any problems, but sometimes a condition arises (like some exception 
-that you know only happens as the result of something very bad) that someone should know about ASAP. So instead of having to write and test 
-a bunch of code to send an email notification or a SMS to the sysadmin, you can just use this library.
+What it is and why You need this
+--------------------------------
+The idea is very simple - to create a simple, lightweight tool/library to ease implementation of an alarm mechanism for both server and other 
+types applications. No matter what you do, you may want Your application to report any problems that requires human intervention ASAP. Server
+applications are the obvious case here, since most of them have to be monitored 24/7. But You may want to built in a simple report mechanism
+to other type of applications as well. So instead of making anyone write their own code or reinvent the appenders for different loggers, one
+can use jAlarmsNG.
+
+I'm not gonna lie to you - it's not new! jAlarmsNG are based on great [jAlarms](http://jalarms.sourceforge.net/) library created by 
+[Enrique Zamudio Lopez](http://javamexico.org/blogs/ezamudio). As I said - it's great. But I wanted more. A lot more. And a completly different 
+approach to alarms themselves. So I decided to fork his solution, clean things up and rewrite the parts I see different. So... *welcome to 
+jAlarmsNG project!*
 
 How it works
 ------------
