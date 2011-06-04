@@ -1,5 +1,6 @@
 package pl.org.radical.alarms;
 
+import pl.org.radical.alarms.cache.AlarmCache;
 import net.spy.memcached.MemcachedClient;
 import net.spy.memcached.OperationTimeoutException;
 
@@ -10,7 +11,10 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import de.huxhorn.lilith.slf4j.Logger;import de.huxhorn.lilith.slf4j.LoggerFactory;
+import org.apache.commons.codec.digest.DigestUtils;
+
+import de.huxhorn.lilith.slf4j.Logger;
+import de.huxhorn.lilith.slf4j.LoggerFactory;
 
 /**
  * An alarm cache that uses memcached to store the data it needs to know if an alarm message should be
@@ -80,8 +84,8 @@ public class AlarmMemcachedClient implements AlarmCache {
 				}
 			}
 		}
-		final String k = channel == null ? String.format("jalarms:ALL:%s:%s", source == null ? "" : source, AlarmSender.hash(message))
-		        : String.format("jalarms:chan%d:%s:%s", channel.hashCode(), source == null ? "" : source, AlarmSender.hash(message));
+		final String k = channel == null ? String.format("jalarms:ALL:%s:%s", source == null ? "" : source, DigestUtils.md5Hex(message))
+				: String.format("jalarms:chan%d:%s:%s", channel.hashCode(), source == null ? "" : source, DigestUtils.md5Hex(message));
 		// We don't care about the actual value, just that the key exists
 		mc.set(k, channel == null ? defint : channel.getMinResendInterval() / 1000, (byte) 0);
 	}
@@ -91,8 +95,8 @@ public class AlarmMemcachedClient implements AlarmCache {
 		if (mc == null) {
 			return true;
 		}
-		final String k = channel == null ? String.format("jalarms:ALL:%s:%s", source == null ? "" : source, AlarmSender.hash(message))
-		        : String.format("jalarms:chan%d:%s:%s", channel.hashCode(), source == null ? "" : source, AlarmSender.hash(message));
+		final String k = channel == null ? String.format("jalarms:ALL:%s:%s", source == null ? "" : source, DigestUtils.md5Hex(message))
+				: String.format("jalarms:chan%d:%s:%s", channel.hashCode(), source == null ? "" : source, DigestUtils.md5Hex(message));
 		// If the entry exists, don't resend
 		try {
 			return mc.get(k) == null;

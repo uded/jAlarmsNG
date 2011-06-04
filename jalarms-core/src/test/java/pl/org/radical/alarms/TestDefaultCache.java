@@ -1,5 +1,8 @@
 package pl.org.radical.alarms;
 
+import pl.org.radical.alarms.cache.AlarmCache;
+import pl.org.radical.alarms.cache.DefaultAlarmCache;
+
 import java.util.ArrayList;
 import java.util.Date;
 

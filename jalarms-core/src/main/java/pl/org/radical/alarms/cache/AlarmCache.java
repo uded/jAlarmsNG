@@ -1,4 +1,6 @@
-package pl.org.radical.alarms;
+package pl.org.radical.alarms.cache;
+
+import pl.org.radical.alarms.AlarmChannel;
 
 /**
  * The AlarmSender uses a cache to avoid resending the same message very frequently.

@@ -1,5 +1,8 @@
 package pl.org.radical.alarms;
 
+import pl.org.radical.alarms.cache.AlarmCache;
+import pl.org.radical.alarms.cache.DefaultAlarmCache;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
@@ -14,11 +17,14 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 /**
  * This is the central class for jAlarms. An AlarmSender can have several AlarmChannel instances
  * to send alarms through different channels to different people.
  * 
  * @author Enrique Zamudio
+ * @author <a href="mailto:lukasz.rzanek@radical.com.pl">Łukasz Rżanek</a>
  */
 public class AlarmSender {
 
@@ -110,7 +116,7 @@ public class AlarmSender {
 	 */
 	public void sendAlarmAlways(final String msg, final String source) {
 		if (bufTime > 0) {
-			final String k = hash(String.format("%s:%s", source == null ? "" : source, msg));
+			final String k = DigestUtils.md5Hex(String.format("%s:%s", source == null ? "" : source, msg));
 			CachedAlarm ca = buffer.get(k);
 			if (ca == null) {
 				ca = new CachedAlarm(source, msg);
@@ -189,26 +195,6 @@ public class AlarmSender {
 		if (cache != null) {
 			cache.shutdown();
 		}
-	}
-
-	/**
-	 * Returns a MD5 hash of the specified message. It can be used to keep a map of the messages sent along
-	 * with the last time for each one, as is done in the AbstractAlarmChannel.
-	 */
-	static String hash(final String msg) {
-		final MessageDigest _md = md5.get();
-		String hash = "hash";
-		if (_md != null) {
-			_md.reset();
-			final byte[] buf = _md.digest(msg.getBytes());
-			final char[] c = new char[buf.length * 2];
-			for (int i = 0; i < buf.length; i++) {
-				c[i * 2] = hex[(buf[i] & 0xf0) >> 4];
-				c[i * 2 + 1] = hex[buf[i] & 0x0f];
-			}
-			hash = new String(c);
-		}
-		return hash;
 	}
 
 	public String getStatus() {

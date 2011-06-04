@@ -6,6 +6,7 @@ package pl.org.radical.alarms;
  * messages to specific users for certain cases.
  * 
  * @author Enrique Zamudio
+ * @author <a href="mailto:lukasz.rzanek@radical.com.pl">Łukasz Rżanek</a>
  */
 public interface AlarmChannel {
 

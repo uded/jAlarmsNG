@@ -1,7 +1,11 @@
-package pl.org.radical.alarms;
+package pl.org.radical.alarms.cache;
+
+import pl.org.radical.alarms.AlarmChannel;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * This is the default cache, which uses a map to store the last date a message was sent for a given
@@ -29,8 +33,8 @@ public class DefaultAlarmCache implements AlarmCache {
 	@Override
 	public void store(final AlarmChannel channel, final String source, final String message) {
 		if (channel == null || channel.getMinResendInterval() > 0) {
-			final String k = channel == null ? String.format("ALL:%s:%s", source == null ? "" : source, AlarmSender.hash(message)) : String
-			        .format("chan%s:%s:%s", channel.hashCode(), source == null ? "" : source, AlarmSender.hash(message));
+			final String k = channel == null ? String.format("ALL:%s:%s", source == null ? "" : source, DigestUtils.md5Hex(message))
+			        : String.format("chan%s:%s:%s", channel.hashCode(), source == null ? "" : source, DigestUtils.md5Hex(message));
 			lastSends.put(k, System.currentTimeMillis());
 		}
 	}
@@ -39,8 +43,8 @@ public class DefaultAlarmCache implements AlarmCache {
 	public boolean shouldResend(final AlarmChannel channel, final String source, final String message) {
 		boolean resend = true;
 		if (channel == null || channel.getMinResendInterval() > 0) {
-			final String k = channel == null ? String.format("ALL:%s:%s", source == null ? "" : source, AlarmSender.hash(message)) : String
-			        .format("chan%s:%s:%s", channel.hashCode(), source == null ? "" : source, AlarmSender.hash(message));
+			final String k = channel == null ? String.format("ALL:%s:%s", source == null ? "" : source, DigestUtils.md5Hex(message))
+					: String.format("chan%s:%s:%s", channel.hashCode(), source == null ? "" : source, DigestUtils.md5Hex(message));
 			final Long then = lastSends.get(k);
 			// Check the last time this same message was sent
 			if (then != null) {
