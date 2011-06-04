@@ -6,9 +6,9 @@
 	<artifactId>parent</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>jalarms</name>
+	<name>jalarms-ng</name>
 	<description>A simple to use alarm system for Java server applications. With jAlarms you can notify different users through different means about certain events in your application, so they can receive notice via email, MSN, SMS, Twitter, etc.</description>
-	<url>http://jalarms.sourceforge.net/</url>
+	<url>http://uded.github.com/jAlarmsNG/</url>
 	<licenses>
 		<license>
 			<name>GNU Lesser General Public License, version 2.1</name>
@@ -17,9 +17,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:svn:https://jalarms.svn.sourceforge.net/svnroot/jalarms</connection>
-		<developerConnection>scm:svn:https://jalarms.svn.sourceforge.net/svnroot/jalarms</developerConnection>
-		<url>http://jalarms.svn.sourceforge.net/viewvc/jalarms/</url>
+		<connection>scm:git:https://uded@github.com/uded/jAlarmsNG.git</connection>
+		<developerConnection>scm:git:git@github.com:uded/jAlarmsNG.git</developerConnection>
+		<url>https://github.com/uded/jAlarmsNG/</url>
 	</scm>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -43,24 +43,24 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>de.huxhorn.lilith</groupId>
-			<artifactId>de.huxhorn.lilith.slf4j</artifactId>
-			<version>0.9.41</version>
-		</dependency>
-	</dependencies>
 	<organization>
-		<name>Java Mexico</name>
-		<url>http://javamexico.org</url>
+		<name>Radical Creations</name>
 	</organization>
 	<developers>
+		<developer>
+			<id>uded</id>
+			<name>Łukasz Rżanek</name>
+			<email>lukasz.rzanek@radical.com.pl</email>
+			<organization>Radical Creations</organization>
+			<timezone>+1</timezone>
+			<properties>
+				<twitter>naczelny</twitter>
+			</properties>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+		</developer>
 		<developer>
 			<id>chochos</id>
 			<name>Enrique Zamudio Lopez</name>
@@ -126,14 +126,6 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>2.0.1</version>
-				<configuration>
-					<locales>en,es</locales>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.7</version>
 				<configuration>
@@ -149,6 +141,19 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.huxhorn.lilith</groupId>
+			<artifactId>de.huxhorn.lilith.slf4j</artifactId>
+			<version>0.9.41</version>
+		</dependency>
+	</dependencies>
 	<distributionManagement>
 		<repository>
 			<id>radical-releases</id>
