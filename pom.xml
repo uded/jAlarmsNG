@@ -101,22 +101,9 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			<!-- 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.1</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			-->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-gpg-plugin</artifactId> 
+				<version>1.1</version> <executions> <execution> <id>sign-artifacts</id> <phase>verify</phase> 
+				<goals> <goal>sign</goal> </goals> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -145,15 +132,22 @@
 	</build>
 	<dependencies>
 		<dependency>
+			<groupId>de.huxhorn.lilith</groupId>
+			<artifactId>de.huxhorn.lilith.slf4j</artifactId>
+			<version>0.9.41</version>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>de.huxhorn.lilith</groupId>
-			<artifactId>de.huxhorn.lilith.slf4j</artifactId>
-			<version>0.9.41</version>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>0.9.28</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<distributionManagement>
