@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>org.pl.radical.jalarms</groupId>
 	<artifactId>jalarms-channels-nagios</artifactId>
-	<name>jAlarms-NG-NG Nagios Passive Check Channel</name>
+	<name>jAlarms-NG Nagios Passive Check Channel</name>
 	<dependencies>
 		<dependency>
 			<groupId>org.pl.radical.jalarms</groupId>
@@ -19,7 +19,7 @@
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.jsendnsca-core</artifactId>
-			<version>1.3.1_2</version>
+			<version>1.3.1_3</version>
 		</dependency>
 	</dependencies>
 </project>
