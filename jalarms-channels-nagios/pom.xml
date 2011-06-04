@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>org.pl.radical.jalarms</groupId>
 	<artifactId>jalarms-channels-nagios</artifactId>
-	<name>jAlarms Nagios Passive Check Channel</name>
+	<name>jAlarms-NG-NG Nagios Passive Check Channel</name>
 	<dependencies>
 		<dependency>
 			<groupId>org.pl.radical.jalarms</groupId>

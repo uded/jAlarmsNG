@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>org.pl.radical.jalarms</groupId>
 	<artifactId>jalarms-channels-msn</artifactId>
-	<name>jAlarms MSN channel</name>
+	<name>jAlarms-NG-NG MSN channel</name>
 	<dependencies>
 		<dependency>
 			<groupId>org.pl.radical.jalarms</groupId>

@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>org.pl.radical.jalarms</groupId>
 	<artifactId>jalarms-channels-jabber</artifactId>
-	<name>jAlarms Jabber channel</name>
+	<name>jAlarms-NG-NG Jabber channel</name>
 	<dependencies>
 		<dependency>
 			<groupId>org.pl.radical.jalarms</groupId>

@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>org.pl.radical.jalarms</groupId>
 	<artifactId>jalarms-channels-smpp</artifactId>
-	<name>jAlarms SMPP channel</name>
+	<name>jAlarms-NG-NG SMPP channel</name>
 	<dependencies>
 		<dependency>
 			<groupId>org.pl.radical.jalarms</groupId>

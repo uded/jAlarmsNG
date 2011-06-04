@@ -9,7 +9,7 @@
   <groupId>org.pl.radical.jalarms</groupId>
   <artifactId>jalarms-core</artifactId>
 	<packaging>jar</packaging>
-  <name>jAlarms Core</name>
+  <name>jAlarms-NG Core</name>
   <description>This project contains the jAlarms core classes.</description>
 	<url>http://jalarms.sourceforge.net/</url>
 	<licenses>

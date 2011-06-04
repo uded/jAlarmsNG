@@ -10,7 +10,7 @@
 	<groupId>org.pl.radical.jalarms</groupId>
 	<artifactId>jalarms-channels</artifactId>
 	<packaging>jar</packaging>
-	<name>jAlarms Channels</name>
+	<name>jAlarms-NG Channels</name>
 	<description>This project contains alarm channels and other classes that have external dependencies.</description>
 	<url>http://jalarms.sourceforge.net/</url>
 	<licenses>
