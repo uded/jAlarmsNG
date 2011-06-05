@@ -3,8 +3,6 @@ package pl.org.radical.alarms;
 import pl.org.radical.alarms.cache.AlarmCache;
 import pl.org.radical.alarms.cache.DefaultAlarmCache;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -28,23 +26,11 @@ import org.apache.commons.codec.digest.DigestUtils;
  */
 public class AlarmSender {
 
-	private static final char[] hex = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 	private List<AlarmChannel> chans = Collections.emptyList();
 	private AlarmCache cache;
 	private int bufTime;
 	private ScheduledExecutorService timer;
 	private ConcurrentHashMap<String, CachedAlarm> buffer;
-	// MessageDigest instances are not thread-safe, so we store them in a ThreadLocal variable.
-	private static ThreadLocal<MessageDigest> md5 = new ThreadLocal<MessageDigest>() {
-		@Override
-		protected MessageDigest initialValue() {
-			try {
-				return MessageDigest.getInstance("MD5");
-			} catch (final NoSuchAlgorithmException ex) {
-				return null;
-			}
-		}
-	};
 
 	/**
 	 * Sets the time in milliseconds that the alarms sent via {@link #sendAlarmAlways(String, String)} are
@@ -64,12 +50,16 @@ public class AlarmSender {
 		return bufTime;
 	}
 
-	/** Sets the cache to use for alarm messages. */
+	/**
+	 * Sets the cache to use for alarm messages.
+	 */
 	public void setAlarmCache(final AlarmCache value) {
 		cache = value;
 	}
 
-	/** Sets the alarm channels to be used for sending alarm messages. */
+	/**
+	 * Sets the alarm channels to be used for sending alarm messages.
+	 */
 	public void setAlarmChannels(final List<AlarmChannel> channels) {
 		chans = channels;
 	}
@@ -186,7 +176,9 @@ public class AlarmSender {
 		}
 	}
 
-	/** Shuts down all channels, and the alarm cache. */
+	/**
+	 * Shuts down all channels, and the alarm cache.
+	 */
 	@PreDestroy
 	public void shutdown() {
 		for (final AlarmChannel c : chans) {
@@ -201,7 +193,9 @@ public class AlarmSender {
 		return String.format("AlarmSender with %d channels, time buffer %d, cache %s", chans.size(), bufTime, cache);
 	}
 
-	/** This should be used by implementations of AlarmCache to store the necessary alarm data in the cache. */
+	/**
+	 * This should be used by implementations of AlarmCache to store the necessary alarm data in the cache.
+	 */
 	private static class CachedAlarm {
 		/** The timestamp of the first time this alarm was sent (in the last batch) */
 		long firstSent;
