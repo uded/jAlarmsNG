@@ -65,6 +65,23 @@ public class AlarmSender {
 	}
 
 	/**
+	 * Sends an alarm through all channels, to the default users defined for each channel, as long as
+	 * the message hasn't been already sent very recently. If the message is sent, the time is recorded
+	 * to avoid further sending until the interval has elapsed for each channel.
+	 */
+	public void sendAlarm(final String msg) {
+		sendAlarm(msg, null);
+	}
+
+	/**
+	 * Sends an alarm through all channels, to the default users defined for each channel, regardless
+	 * of the last time the same message was sent.
+	 */
+	public void sendAlarmAlways(final String msg) {
+		sendAlarmAlways(msg, null);
+	}
+
+	/**
 	 * Sends an alarm through all channels, to the users defined for the specified source in each channel,
 	 * as long as the message hasn't been already sent very recently. If the message is sent, the time is recorded
 	 * to avoid further sending until the interval has elapsed for each channel.
@@ -119,23 +136,6 @@ public class AlarmSender {
 				c.send(msg, source);
 			}
 		}
-	}
-
-	/**
-	 * Sends an alarm through all channels, to the default users defined for each channel, as long as
-	 * the message hasn't been already sent very recently. If the message is sent, the time is recorded
-	 * to avoid further sending until the interval has elapsed for each channel.
-	 */
-	public void sendAlarm(final String msg) {
-		sendAlarm(msg, null);
-	}
-
-	/**
-	 * Sends an alarm through all channels, to the default users defined for each channel, regardless
-	 * of the last time the same message was sent.
-	 */
-	public void sendAlarmAlways(final String msg) {
-		sendAlarmAlways(msg, null);
 	}
 
 	/**
