@@ -56,7 +56,7 @@ public class Sfl4jChannel extends AbstractAlarmChannel {
 				log = LoggerFactory.getLogger("ALARM");
 				log.log(level, msg);
 			} else {
-				log = LoggerFactory.getLogger("ALARM.src");
+				log = LoggerFactory.getLogger("ALARM." + src);
 				log.log(level, msg);
 			}
 		}
