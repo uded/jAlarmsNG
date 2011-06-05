@@ -11,6 +11,8 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import de.huxhorn.lilith.slf4j.Logger.Level;
 
@@ -96,4 +98,18 @@ public class Sfl4jChannelTest {
 		String lines = FileUtils.readFileToString(file);
 		assertTrue("No lines with specified text in log file", lines.contains("ERROR ALARM." + src + " - " + msg));
 	}
+
+	@Test
+	public void testAlarmNoSourceAndLevelSpring() throws IOException, InterruptedException {
+		String msg = "Test message, without source but DEBUG level";
+
+		ApplicationContext context = new ClassPathXmlApplicationContext("application-config-slf4jchannel-test.xml");
+		AlarmSender sender = context.getBean("alarmSender-slf4j", AlarmSender.class);
+		sender.sendAlarm(msg);
+		Thread.sleep(1000L);
+
+		String lines = FileUtils.readFileToString(file);
+		assertTrue("No lines with specified text in log file", lines.contains("DEBUG ALARM - " + msg));
+	}
+
 }

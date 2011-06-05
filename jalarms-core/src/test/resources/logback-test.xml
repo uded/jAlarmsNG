@@ -21,6 +21,8 @@
 	<logger name="ALARM" level="TRACE">
 		<appender-ref ref="FILE" />
 	</logger>
+	
+	<logger name="org.springframework" level="WARN" />
 
 	<root level="all">
 		<appender-ref ref="STDOUT" />
