@@ -1,7 +1,6 @@
 package pl.org.radical.alarms.channels;
 
 import pl.org.radical.alarms.AbstractAlarmChannel;
-import pl.org.radical.alarms.util.Utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -119,8 +118,8 @@ public class HttpChannel extends AbstractAlarmChannel {
 			if (mypost != null) {
 				// Replace vars in postData
 				try {
-					mypost = Utils.replaceAll("${alarm}", URLEncoder.encode(alarm, "UTF-8"), mypost);
-					mypost = Utils.replaceAll("${source}", URLEncoder.encode(source, "UTF-8"), mypost);
+					mypost = mypost.replace("${alarm}", URLEncoder.encode(alarm, "UTF-8"));
+					mypost = mypost.replace("${source}", URLEncoder.encode(source, "UTF-8"));
 				} catch (final UnsupportedEncodingException ex) {
 					log.error("Cannot encode alarm or source in POST data", ex);
 					return;
@@ -129,8 +128,8 @@ public class HttpChannel extends AbstractAlarmChannel {
 			if (myurl == null) {
 				try {
 					// Replace vars in url
-					String _url = Utils.replaceAll("${alarm}", URLEncoder.encode(alarm, "UTF-8"), url);
-					_url = Utils.replaceAll("${source}", URLEncoder.encode(source, "UTF-8"), _url);
+					String _url = url.replace("${alarm}", URLEncoder.encode(alarm, "UTF-8"));
+					_url = _url.replace("${source}", URLEncoder.encode(source, "UTF-8"));
 					myurl = new URL(_url);
 				} catch (final MalformedURLException ex) {
 					log.error("Resulting URL is invalid", ex);
