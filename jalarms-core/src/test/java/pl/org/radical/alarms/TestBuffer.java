@@ -4,8 +4,11 @@ import java.util.Collections;
 import java.util.Date;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
-import de.huxhorn.lilith.slf4j.Logger;import de.huxhorn.lilith.slf4j.LoggerFactory;
+
+import de.huxhorn.lilith.slf4j.Logger;
+import de.huxhorn.lilith.slf4j.LoggerFactory;
 
 /**
  * Test the buffering mechanism introduced in 1.5
@@ -36,7 +39,8 @@ public class TestBuffer implements UnitTestChannel.ChanDelegate {
 		assert System.currentTimeMillis() - chan.lastSent < 1000;
 	}
 
-	// @Test
+	@Test
+	@Ignore
 	public void testWithBuffer() {
 		// First, with no buffer, an alarm should be sent immediately
 		state = 2;
