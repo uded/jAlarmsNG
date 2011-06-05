@@ -8,6 +8,7 @@ package pl.org.radical.alarms.util;
 public class Utils {
 
 	/** Replaces all occurrences of var with value, inside the specified string. */
+	@Deprecated
 	public static String replaceAll(final String var, final String value, final String string) {
 		if (string.indexOf(var) >= 0) {
 			final StringBuilder buf = new StringBuilder(string);
