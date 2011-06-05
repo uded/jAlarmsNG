@@ -19,7 +19,6 @@ import javax.annotation.Resource;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-import com.solab.util.Base64;
 
 /**
  * A channel that uses Twitter to publish alarms. The way this works is like this:

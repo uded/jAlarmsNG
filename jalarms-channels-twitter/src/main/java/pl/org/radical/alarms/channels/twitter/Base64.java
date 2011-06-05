@@ -1,4 +1,4 @@
-package com.solab.util;
+package pl.org.radical.alarms.channels.twitter;
 
 import java.io.ByteArrayOutputStream;
 
