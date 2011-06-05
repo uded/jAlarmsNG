@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import de.huxhorn.lilith.slf4j.Logger;
+import de.huxhorn.lilith.slf4j.Logger.Level;
 import de.huxhorn.lilith.slf4j.LoggerFactory;
 
 public class Sfl4jChannel extends AbstractAlarmChannel {
@@ -15,7 +16,7 @@ public class Sfl4jChannel extends AbstractAlarmChannel {
 	private String src;
 
 	@Setter
-	private Logger.Level level;
+	private Level level = Level.WARN;
 
 	/**
 	 * Sets a value that will be matched against the sources received in {@link #createSendTask(String, String)};
@@ -53,10 +54,10 @@ public class Sfl4jChannel extends AbstractAlarmChannel {
 		public void run() {
 			if (src == null) {
 				log = LoggerFactory.getLogger("ALARM");
-				log.info(msg);
+				log.log(level, msg);
 			} else {
 				log = LoggerFactory.getLogger("ALARM.src");
-				log.info(msg);
+				log.log(level, msg);
 			}
 		}
 	}
