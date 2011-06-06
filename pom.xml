@@ -156,7 +156,7 @@
 			<url>https://dev.radical.com.pl/maven/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>radical-snapshot</id>
+			<id>radical-snapshots</id>
 			<url>https://dev.radical.com.pl/maven/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
