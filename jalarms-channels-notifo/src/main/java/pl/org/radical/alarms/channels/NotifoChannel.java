@@ -4,16 +4,26 @@ import pl.org.radical.alarms.AbstractAlarmChannel;
 
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.message.BasicNameValuePair;
+import javax.annotation.PostConstruct;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.notifo.client.NotifoClient;
+import com.notifo.client.NotifoException;
+import com.notifo.client.NotifoHttpClient;
+import com.notifo.client.NotifoMessage;
 
 public class NotifoChannel extends AbstractAlarmChannel {
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+	/**
+	 * Contacts to which the alarm will be sent.
+	 */
+	private List<String> contacts;
 
 	/**
 	 * Contacts to which the alarm will be sent grouped by source.
@@ -25,13 +35,23 @@ public class NotifoChannel extends AbstractAlarmChannel {
 	 * A username name which will be used by Notifo client to connect to API service
 	 */
 	@Setter
-	public String serviceUser;
+	private String serviceUser;
 
 	/**
 	 * API token to authorize the use of the service.
 	 */
 	@Setter
-	public String apiToken;
+	private String apiToken;
+
+	@Setter
+	private String subject; // FIXME Dodać default
+
+	private NotifoClient client;
+
+	@PostConstruct
+	public void init() {
+		client = new NotifoHttpClient(serviceUser, apiToken);
+	}
 
 	@Override
 	protected Runnable createSendTask(final String msg, final String src) {
@@ -44,10 +64,10 @@ public class NotifoChannel extends AbstractAlarmChannel {
 	}
 
 	/**
-	 * This class is used by the MailChannel; it sends out an alarm with the JavaMailSender set in the
-	 * MailChannel.
+	 * This class is used by the NotifoChannel; it sends out an alarm with the API
 	 * 
-	 * @author Enrique Zamudio
+	 * @author <a href="mailto:lukasz.rzanek@radical.com.pl">Łukasz Rżanek</a>
+	 * @author © 2011 Radical Creations
 	 */
 	private class NotifoTask implements Runnable {
 		private final String msg;
@@ -60,14 +80,24 @@ public class NotifoChannel extends AbstractAlarmChannel {
 
 		@Override
 		public void run() {
-			HttpPost post = new HttpPost("https://api.notifo.com/v1/send_notification");
+			List<String> destinations;
+			if (src != null && contactsBySource.containsKey(src)) {
+				destinations = contactsBySource.get(src);
+			} else {
+				destinations = contacts;
+			}
 
-			for (Entry<String, List<String>> entries: contactsBySource.entrySet()) {
-				List<NameValuePair> params = new ArrayList<NameValuePair>();
-				params.add(new BasicNameValuePair("to", ""));
-
+			NotifoMessage nmsg;
+			for (String dest : destinations) {
+				nmsg = new NotifoMessage(dest, msg);
+				nmsg.setLabel("jAlarms");
+				nmsg.setSubject(subject);
+				try {
+					client.sendMessage(nmsg);
+				} catch (NotifoException e) {
+					log.error("Sending Notifo alarm to '{}'", dest);
+				}
 			}
 		}
-
 	}
 }
