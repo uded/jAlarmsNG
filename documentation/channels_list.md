@@ -18,16 +18,17 @@ List of available channels
 - Email channel
 - Jabber channel
 - MSN channel
+- Notifo
 - SMS channels: 
- - SMPP channel
- - Notifo channel
- - Clickatell channel
+	- SMPP channel
+	- Twilio channel
+	- Clickatell channel
 - Twitter channel
 - Nagios channel
 - Growl channel
 - Bug tracking channels:
- - JIRA channel
- - Mantis channel
- - Trac channel
- - Google Code channel
- - GitHub channel
+	- JIRA channel
+	- Mantis channel
+	- Trac channel
+	- Google Code channel
+	- GitHub channel
